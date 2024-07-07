@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t swylem/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true swylem/docker-react npm run test
